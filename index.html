@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <div id="header">
+        <div>
+            <span id= "icon" class="material-icons">
+                fact_check
+            </span>
+        </div>
+        <div id="title-app">ToDoer</div>
+        <div id="add-task">
+            <button class="material-icons" id="add-taskBtn" type="button">
+                add
+            </button>
+        </div>
+        <div id="name">Guest</div>
+    </div>
+    <div id="content">
+        <div id="controls">
+            <button id="inbox" class="control-btn">
+                <span class="material-icons btn-icons">
+                    inbox
+                </span>
+                Inbox
+            </button>
+            <button id="today-tasks" class="control-btn">
+                <span class="material-icons btn-icons">
+                today
+                </span>Today</button>
+            <button id="weekly-tasks" class="control-btn">
+                <span class="material-icons btn-icons">
+                    calendar_view_week
+                </span>
+                This Week
+            </button>
+        </div>
+        <div id="projects">
+            <div id="title-project">Projects
+                <button class="material-icons" id="add-projectBtn" type="button">
+                    add
+                </button>
+            </div>
+        </div>
+        <div id="tasks"></div>
+    </div>
+    <div id="modal-container">
+        <div id="modal-content">
+            <div id="intro">Hello! Let's get you started.</div>
+            <input type="text" id="name-input" placeholder="Enter your name" class="control-btn">
+            <input type="submit" id="submitBtn" class="control-btn">
+            <script src="main.js" defer></script>
+        </div>
+    </div>
+</body>
+</html>

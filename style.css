@@ -1,0 +1,146 @@
+html * {
+    font-family: 'Cascadia Mono', Courier, monospace;
+}
+
+#header{
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "icon title . add name";
+    align-items: center;
+}
+
+#icon{
+    grid-column: icon;
+    font-size: 35px;
+    justify-self: left;
+}
+
+#title-app{
+    grid-area: title;
+    font-size: 35px;
+    font-weight: 600;
+}
+
+#add-task{
+    grid-area: add;
+    justify-self: right;
+}
+
+#add-taskBtn{
+    background: transparent;
+    border-radius: 25%;
+    height: 40px;
+    width: 40px;
+    box-shadow: 2px 2px black;
+}
+
+#name{
+    grid-area: name;
+    justify-self: center;
+    font-size: 25px;
+    margin-left: 20px;
+}
+
+#content{
+    display:grid;
+    width: 100%;
+    height: 100vh;
+    grid-template-columns: 0.5fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "controls cont",
+                         "projects cont";
+
+}
+#controls{
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: left;
+}
+#projects{
+    grid-area: 2 / 1;
+}
+
+#tasks{
+    grid-row: 1 / span 2;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+    background: rgba(0,0,0,8%);
+}
+
+.control-btn{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap:30%;
+    background: transparent;
+    border-radius: 10px;
+    box-shadow: 2px 2px black;
+    min-width: 150px;
+    white-space: nowrap;
+}
+
+.control-btn:hover{
+    background: rgba(0,0,0,4%);
+}
+
+#add-projectBtn{
+    font-size: 12px;
+    font-weight: 800;
+    height: 25px;
+    width: 20px;
+    background: transparent;
+    box-shadow: 1px 1px black;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+    padding-right: 16px;
+    justify-self: right;
+}
+
+#add-projectBtn:hover{
+    background: rgba(0,0,0,4%);
+}
+
+#title-project{
+    margin-left: 20px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:30%;
+}
+
+#modal-container{
+    background-color: rgba(211, 218, 216, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top:0;
+    left:0;
+    opacity: 1;
+    pointer-events: auto;
+    height:100vh;
+    width:100vw;
+}
+
+#modal-content{
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#modal-content > input[type="text"]{
+    font-size: 25px;
+}
+
+#submitBtn{
+    width: fit-content;
+    align-self: center;
+    justify-content: center;
+}
