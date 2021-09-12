@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do</title>
+    <script src="main.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
@@ -49,14 +50,45 @@
                 </button>
             </div>
         </div>
-        <div id="tasks"></div>
+        <div id="tasks">
+            <div id="display-tasks">
+                <datalist id="priorities">
+                    <option>High</option>
+                    <option>Medium</option>
+                    <option>Low</option>
+                </datalist>
+            </div>
+        </div>
     </div>
     <div id="modal-container">
         <div id="modal-content">
             <div id="intro">Hello! Let's get you started.</div>
             <input type="text" id="name-input" placeholder="Enter your name" class="control-btn">
-            <input type="submit" id="submitBtn" class="control-btn">
-            <script src="main.js" defer></script>
+            <input type="submit" id="submit-name" class="control-btn">
+        </div>
+    </div>
+    <div id="task-container">
+        <div id="get-tasks">
+            <div id="task-header">Task Details</div>
+            <div id="task-title">
+                <input type="text"  placeholder="Title">
+            </div>
+            <div id="task-description">
+                <textarea wrap="soft" maxlength="40" id = "text-area" placeholder="Description"></textarea>
+            </div>
+            <div id="task-due">
+                <div id="due-date-title">Due Date</div>
+                <input type="date" id="due" >
+            </div>
+            <div id="task-priority">
+                <input type="text" list="priorities"  placeholder="Priority">
+            </div>
+            <div id="cancel-task">
+                <button class="control-btn">Cancel</button>
+            </div>
+            <div id="submit-task">
+                <button  type="submit" class="control-btn">Submit</button>
+            </div>
         </div>
     </div>
 </body>
