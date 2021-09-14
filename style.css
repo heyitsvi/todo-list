@@ -143,12 +143,16 @@ html * {
     pointer-events: auto;
 }
 
-/* #modal-content{
+#modal-content{
     font-size: 25px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-} */
+}
+
+#submit-name > input[type="button"]{
+    width: 50px;
+}
 /* input[type="text"], input[type="datetime-local"] {
     font-size: 25px;
     outline: none;
@@ -177,10 +181,8 @@ html * {
 }
 
 #text-area{
-    /* overflow:hidden; */
+    overflow:hidden;
     resize: none;
-    word-wrap: break-word;
-    white-space: pre-line;
 }
 
 input[type="text"]{
@@ -209,6 +211,7 @@ input[type="text"]{
     display: flex;
     border: solid;
     border-width: 2px;
+    width: 300px;
     gap:10px;
     font-weight: 200;
     padding-left: 10px;
@@ -235,4 +238,47 @@ input[type="text"]{
 
 input[type=date]{
     border-width: 0px;
+}
+
+.task-element{
+    margin: 10px 10px 10px 10px;
+    height: 32px;
+    display: grid;
+    grid-auto-columns: 50px 1fr 1fr 100px 100px 50px;
+    grid-template-rows: 1fr;
+    padding: 0px 10px;
+    grid-auto-flow: column;
+    justify-content: space-around;
+    border:solid white;
+    align-items: center;
+    justify-items: center;
+}
+
+.task-element:hover{
+    background-color: white;
+}
+
+#check{
+    display: flex;
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    font-size: 5px;
+    width: 25px;
+    border-radius: 50%;
+    /* overflow: hidden; */
+}
+.material-icons{
+    font-size: 5px;
+}
+#update-task{
+    background: transparent;
+    height: 25px;
+    width: 25px;
+    font-size: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
