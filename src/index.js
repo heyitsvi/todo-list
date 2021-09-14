@@ -22,26 +22,23 @@ import {appendElementtoID} from "./dom.js";
         modalcontainer.classList.remove('show');
     }
 
-    if(!localStorage.getItem('username')){
-        showContainer();
-        getName();
-    }
-    else{
-        setName();
-    }
-
-
-
-    document.querySelector("#submit-task").addEventListener("click", event => {
-        console.log("click");
-    });
-
-
     function setName(){
         document.querySelector("#name").innerText  = localStorage.username;
     }
+
+    (function checkUsername(){
+        if(!localStorage.getItem('username')){
+            showContainer();
+            getName();
+        }
+        else{
+            setName();
+        }
+
+    })()
+
+    taskOperations();
 })()
 
-taskOperations();
 
 
