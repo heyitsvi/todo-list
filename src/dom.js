@@ -1,7 +1,6 @@
+import {displayInbox} from "./inbox.js";
 
-function appendElementtoID(element,id){
-    document.querySelector(`id`).appendChild(element);
-}
+
 
 
 function appendDisplayElement(id,object){
@@ -11,13 +10,22 @@ function appendDisplayElement(id,object){
 
 function createDisplayElement(object){
     let task = document.createElement('div');
+    if (object.check === true){
+        task.style.backgroundColor = "cyan";
+    }
     task.setAttribute("class","task-element");
     task.setAttribute("id",`task-number-${object["task_number"]}`)
     let check = document.createElement('button');
-    check.setAttribute("id","check");
-    check.innerHTML= `<span class="material-icons">
-    done
-    </span>`;
+    if (object.check === true){
+        check.innerHTML = "";
+    }
+    else{
+        check.innerHTML= `<span class="material-icons">
+        done
+        </span>`;
+    }
+    check.setAttribute("id",`check-${object["task_number"]}`);
+    check.setAttribute("class","check");
     let title = document.createElement('div');
     title.setAttribute("id","title");
     title.textContent=object["title"];
@@ -30,13 +38,23 @@ function createDisplayElement(object){
     let priority = document.createElement('div');
     priority.setAttribute("id","priority");
     priority.textContent = object["priority"];
-    let close = document.createElement('button');
-    close.setAttribute("id","update-task");
-    close.innerHTML=`<span class="material-icons" style="font-size:20px;">
+    let update = document.createElement('button');
+    update.setAttribute("id",`update-task-${object["task_number"]}`);
+    update.setAttribute("class","updateTaskBtn");
+    update.innerHTML=`<span class="material-icons" style="font-size:20px;">
     edit
     </span>`;
 
-    let list = [check,title,description,duedate,priority,close];
+    let close = document.createElement("button");
+    close.setAttribute("id",`close-task-${object["task_number"]}`);
+    close.setAttribute("class","closeTaskBtn");
+
+    close.innerHTML = `<span class="material-icons">
+    close
+    </span>`
+
+
+    let list = [check,title,description,duedate,priority,update,close];
 
     list.forEach( child => {
         task.appendChild(child);
@@ -47,8 +65,20 @@ function createDisplayElement(object){
 
 
 
+function appendWarning(){
+    
+}
+
+
+
+// function showClearTasksBtn(){
+//     document.querySelector("#clear-tasks").classList.add('show');
+// }
+
+
+
 
 
 // function addTask
 
-export {appendElementtoID,createDisplayElement,appendDisplayElement,};
+export {createDisplayElement,appendDisplayElement};

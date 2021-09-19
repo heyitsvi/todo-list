@@ -1,5 +1,7 @@
 import {createTaskElement, taskOperations} from "./tasks.js";
 import {appendElementtoID} from "./dom.js";
+import {displayInbox, InboxBtn} from "./inbox.js";
+import {ProjectOperations} from "./project.js";
 (function pageload(){
     const submitBtn = document.querySelector("#submit-name");
     const modalcontainer = document.querySelector("#modal-container");
@@ -8,6 +10,9 @@ import {appendElementtoID} from "./dom.js";
     function getName(){
         submitBtn.addEventListener("click",event => {
             let _username = document.querySelector("#name-input").value;
+            if (_username == ""){
+                _username = "Guest";
+            }
             localStorage.setItem("username",`${_username}`);
             setName();
             hideContainer();
@@ -36,8 +41,13 @@ import {appendElementtoID} from "./dom.js";
         }
 
     })()
+    InboxBtn();
+
+    displayInbox();
 
     taskOperations();
+
+    ProjectOperations();
 })()
 
 

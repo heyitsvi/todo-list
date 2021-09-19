@@ -118,7 +118,7 @@ html * {
     gap:30%;
 }
 
-#modal-container, #task-container{
+#modal-container, #task-container, #update-task-container, #project-container{
     background-color: rgba(211, 218, 216, 0.5);
     display: flex;
     align-items: center;
@@ -133,15 +133,25 @@ html * {
 }
 
 
-#modal-container.show{
+#modal-container.show, #task-container.show, #update-task-container.show, #project-container.show{
     opacity: 1;
     pointer-events: auto;
 }
 
-#task-container.show{
+/* #task-container.show{
     opacity: 1;
     pointer-events: auto;
 }
+
+#update-task-container.show{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#project-container.show{
+    opacity: 1;
+    pointer-events: ;
+} */
 
 #modal-content{
     font-size: 25px;
@@ -150,8 +160,15 @@ html * {
     gap: 10px;
 }
 
-#submit-name > input[type="button"]{
+#submit-name{
+    align-self: center;
+    display: flex;
     width: 50px;
+    justify-content: center;
+}
+
+#name-input{
+    align-self: center;
 }
 /* input[type="text"], input[type="datetime-local"] {
     font-size: 25px;
@@ -169,7 +186,7 @@ html * {
     padding: 20px 20px;
     align-items: center;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 100px 1fr 1fr 100px;
+    grid-template-rows: 60px 25px 1fr 1fr 100px;
     gap: 10px;
 }
 
@@ -179,6 +196,19 @@ html * {
     border-radius: 10px;
     box-shadow: 2px 2px ;
 }
+
+#data-list-selections{
+    grid-area: 4 / 2;
+    display: flex;
+
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+/* #task-priority, #project-selection{
+} */
 
 #text-area{
     overflow:hidden;
@@ -195,6 +225,11 @@ input[type="text"]{
     outline: none;
 }
 
+#task-title{
+    grid-area: 3 / 1;
+}
+
+
 #task-header{
     grid-area: 1 / span 2;
     justify-self: center;
@@ -203,12 +238,13 @@ input[type="text"]{
 
 
 #task-description{
-    grid-row-start: 3;
+    grid-area: 4 / 1;
     align-items: flex-start;
 }
 
 #task-due{
     display: flex;
+    grid-area: 3 / 2;
     border: solid;
     border-width: 2px;
     width: 300px;
@@ -223,15 +259,15 @@ input[type="text"]{
     box-shadow: 2px 2px ;
 }
 
-#submit-task{
-    grid-area: 4 / 2;
+#submit-task, #update-submit-task{
+    grid-area: 5 / 2;
     justify-self: center;
     align-self: flex-start;
     align-content: center;
 }
 
-#cancel-task{
-    grid-area: 4 / 1;
+#cancel-task, #update-cancel-task{
+    grid-area: 5 / 1;
     justify-self: center;
     align-self: flex-start;
 }
@@ -244,7 +280,7 @@ input[type=date]{
     margin: 10px 10px 10px 10px;
     height: 32px;
     display: grid;
-    grid-auto-columns: 50px 1fr 1fr 100px 100px 50px;
+    grid-auto-columns: 50px 1fr 1fr 100px 100px 50px 50px;
     grid-template-rows: 1fr;
     padding: 0px 10px;
     grid-auto-flow: column;
@@ -258,7 +294,7 @@ input[type=date]{
     background-color: white;
 }
 
-#check{
+.check{
     display: flex;
     background: transparent;
     align-items: center;
@@ -267,12 +303,11 @@ input[type=date]{
     font-size: 5px;
     width: 25px;
     border-radius: 50%;
-    /* overflow: hidden; */
 }
 .material-icons{
-    font-size: 5px;
+    font-size: 4px;
 }
-#update-task{
+.updateTaskBtn, .closeTaskBtn{
     background: transparent;
     height: 25px;
     width: 25px;
@@ -281,4 +316,108 @@ input[type=date]{
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+}
+
+.updateTaskBtn, .closeTaskBtn:hover{
+    background-color: white;
+}
+
+#clear-tasks{
+    height:35px;
+    width: 80px;
+    opacity: 0;
+    pointer-events: none;
+    margin-left: 92%;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px black;
+}
+
+#clear-tasks:hover{
+    background-color: white;
+}
+
+#clear-tasks.show{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#error-message{
+    /* display: flex; */
+    width: 100%;
+    font-size: 20px;
+    margin-left: 55%;
+    justify-content: center;
+}
+
+#project-input{
+    display:grid;
+    width: 450px;
+    height: 250px;
+    border-radius: 10px;
+    box-shadow: 4px 4px black;
+    background-color: white;
+    grid-template-rows: 40px 25px 1fr  1fr;
+    grid-template-columns: 1fr 1fr;
+}
+
+#project-header{
+    font-size: 25px;
+    grid-area: 1 / span 2;
+    justify-self: center; 
+    align-self: center;
+}
+
+#project-name{
+    justify-self: center;
+    align-self: center;
+    grid-area: 3 / span 2;
+}
+
+#add-project-Btn, #cancel-project-Btn{
+    grid-area: 4;
+    height: 40px;
+    width: 30px;
+    align-self: center;
+    justify-self: center;
+    justify-content: center;
+}
+
+#project-error{
+    grid-area: 2 / span 2;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    white-space: nowrap;
+}
+#project-list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.project-title{
+    margin-top: 5px;
+    padding-left: 10px;
+    gap: 10px;
+    height: 25px;
+    display: flex;
+    align-content: center;
+    justify-content: left;
+    border-radius: 10px;
+    box-shadow: 4px 4px rgb(87, 255, 255);
+    background-color: rgb(163, 255, 255);
+}
+
+.project-title:hover{
+    background-color: rgb(57, 187, 226);
+}
+
+#projects{
+    display: grid;
+    grid-template-rows: 40px 1fr 30px;
+    grid-template-columns: 1fr;
+}
+
+#clear-projects{
+    justify-content: center;
 }
