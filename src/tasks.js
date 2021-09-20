@@ -121,14 +121,11 @@ function taskOperations(){
 
     function updateLocalStorageValues(task_number,updated_values){
         let object = JSON.parse(localStorage.getItem(`${task_number}`));
-        // console.log(object);
-        // console.log(updated_values);
         object.title = updated_values.title;
         object.description = updated_values.description;
         object.duedate = updated_values.duedate;
         object.priority = updated_values.priority;
         object.project = updated_values.project;
-        // console.log(object);
         localStorage.setItem(`${task_number}`, JSON.stringify(object));
     }
 
@@ -161,12 +158,9 @@ function taskOperations(){
 
     updateTasks();
 
-    // setTimeout(updateTasks,100);
-
 
     function updateTaskElement(task_number){
         let object = JSON.parse(localStorage.getItem(`${task_number}`));
-        // console.log(object);
         document.querySelector(`#task-number-${task_number}`).querySelector("#title").textContent = object.title;
         document.querySelector(`#task-number-${task_number}`).querySelector("#description").textContent=object.description;
         document.querySelector(`#task-number-${task_number}`).querySelector("#duedate").textContent=object.duedate;
@@ -184,11 +178,15 @@ function taskOperations(){
 
     function createTaskObject(){
         let values = getvaluesTask();
-        // title, description, duedate, priority,check,task_number,project="Inbox"
         let object = new tasks(values.title,values.task_description,values.task_due,values.task_priority,false,task_number,values.project);
         task_number++;
         localStorage.setItem("task_number", JSON.stringify(task_number));
         return object;
+    }
+
+    function getTaskNumber(){
+        let task_number = JSON.parse(localStorage.getItem("task_number"));
+        return task_number;
     }
 
     function showUpdateTaskContainer(){
@@ -256,7 +254,6 @@ function taskOperations(){
     (function submittaskBtnClick(){
         document.querySelector("#submit-task").addEventListener("click", event => {
             if(checkTaskValues() === true){
-                // console.log(createTaskObject());
                 storeinLocalStorage(createTaskObject());
                 hideTaskContainer();
                 displayInbox();
@@ -265,9 +262,7 @@ function taskOperations(){
                 showClearTasksBtn();
                 clearvaluesTask();
                 clearError("task-container");
-                // deleteTask();
                 clearAllTasks();
-                // InboxBtn();
             }
             else{
                 displayError("task-container");
@@ -279,7 +274,7 @@ function taskOperations(){
 
     function clearAllTasks(){
         let i = 1;
-        let task_number = JSON.parse(localStorage.getItem("task_number"));
+        let task_number = getTaskNumber();
         document.querySelector("#clear-tasks").addEventListener("click", event => {
             while(i <= task_number){
                 if (localStorage.getItem(`${i}`)){
@@ -289,7 +284,7 @@ function taskOperations(){
             }
         task_number = 1;
         localStorage.setItem("task_number","1");
-        // displayInbox();
+        displayInbox();
         })
     }
 
@@ -298,7 +293,7 @@ function taskOperations(){
 
 
     return {
-        task_number, updateTasks
+        task_number, updateTasks, clearAllTasks
     }
 
 }

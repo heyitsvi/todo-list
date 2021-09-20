@@ -138,20 +138,6 @@ html * {
     pointer-events: auto;
 }
 
-/* #task-container.show{
-    opacity: 1;
-    pointer-events: auto;
-}
-
-#update-task-container.show{
-    opacity: 1;
-    pointer-events: auto;
-}
-
-#project-container.show{
-    opacity: 1;
-    pointer-events: ;
-} */
 
 #modal-content{
     font-size: 25px;
@@ -170,10 +156,6 @@ html * {
 #name-input{
     align-self: center;
 }
-/* input[type="text"], input[type="datetime-local"] {
-    font-size: 25px;
-    outline: none;
-} */
 
 #get-tasks{
     display: grid;
@@ -207,8 +189,6 @@ html * {
     margin-bottom: 15px;
 }
 
-/* #task-priority, #project-selection{
-} */
 
 #text-area{
     overflow:hidden;
@@ -343,7 +323,6 @@ input[type=date]{
 }
 
 #error-message{
-    /* display: flex; */
     width: 100%;
     font-size: 20px;
     margin-left: 55%;

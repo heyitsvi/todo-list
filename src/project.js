@@ -1,18 +1,10 @@
 import {appendDisplayElement,createDisplayElement} from "./dom.js";
 import {taskOperations} from "./tasks.js";
 
-class Project{
-    constructor(name){
-        this.name = name;
-    }
-}
-
-
-
 function ProjectOperations(){
     let project_list = [];
     let project_number = 1;
-    // console.log(taskOperations().test());
+
     function createProject(title){
         let project = new Project(title);
         return project;
@@ -40,10 +32,7 @@ function ProjectOperations(){
 
     function storeProjectName(){
         let name = document.getElementById("project-name").value;
-        // console.log(name);
         project_list.push(name);
-        // console.log(project_list);
-        // console.log(project_list);
         localStorage.setItem('Projects', JSON.stringify(project_list));
     }
 
@@ -52,19 +41,13 @@ function ProjectOperations(){
         div.setAttribute("id", `project-number-${project_number}`);
         div.setAttribute("class","project-title");
         div.style.height = "30px";
-        // div.style.border = "solid black";
         div.innerHTML = `<span class="material-icons">bookmarks </span> ${title}`;
-        // div.textContent = title;
         return div;
     }
 
     function clearError(){
         document.getElementById("project-error").textContent = '';
     }
-
-    // function clearupdateError(){
-    //     document.getElementById("update-task-container").querySelector("#project-error").textContent = '';
-    // }
 
     function displayProjectError(){
         document.getElementById("project-error").textContent = "Please enter Project Name";
@@ -134,49 +117,46 @@ function ProjectOperations(){
                 let task_number = JSON.parse(localStorage.getItem("task_number"));
                 document.getElementById("display-tasks").textContent = "";
                 let project_name = project.textContent.replace("bookmarks  ","");
-                // console.log(project_name);
                 let i = 1;
+
                 while(i <= task_number){
                     if (localStorage.getItem(`${i}`)){
-                        let object = JSON.parse(localStorage.getItem(`${i}`));
-                        // console.log(object.project == "Inbox");
-                
+                        let object = JSON.parse(localStorage.getItem(`${i}`));      
                         if (object.project == project_name){
                             let display_element = createDisplayElement(object);
-                            // console.log(display_element);
                             appendDisplayElement("display-tasks",display_element);
                         }
                     }
                     i++;
                 }
                 taskOperations().updateTasks();
-                // // taskOperations().clearAllTasks();
-                // taskOperations().deleteTask();
-                // taskOperations().checkifTaskDone();
+                taskOperations().clearAllTasks();
                 })
         }) 
     }
 
     displaytasksinProject();
-  
-
-    document.querySelector("#add-projectBtn").addEventListener("click", e => {
-        document.querySelector("#add-project-Btn").addEventListener("click", event => {
-            if (checkProjectInput() === true){
-                let title = document.getElementById("project-name").value
-                appendDisplayElement("project-list",createProjectElement(title));
-                storeProjectName();
-                createProjectDataList(document.getElementById("project-name").value);
-                clearError();
-                hideProjectContainer();
-                clearInput();
-                // displaytasksinProject();
-            }
-            else{
-                displayProjectError();
-            }
+    let addProjectBtn = () => {
+        document.querySelector("#add-projectBtn").addEventListener("click", e => {
+            document.querySelector("#add-project-Btn").addEventListener("click", event => {
+                if (checkProjectInput() === true){
+                    let title = document.getElementById("project-name").value
+                    appendDisplayElement("project-list",createProjectElement(title));
+                    storeProjectName();
+                    createProjectDataList(document.getElementById("project-name").value);
+                    clearError();
+                    hideProjectContainer();
+                    clearInput();
+                }
+                else{
+                    displayProjectError();
+                }
+            })
         })
-    })
+    }
+
+    addProjectBtn();
+
 
 }
 
