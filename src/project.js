@@ -131,6 +131,7 @@ function ProjectOperations(){
                 }
                 taskOperations().updateTasks();
                 taskOperations().clearAllTasks();
+                taskOperations().deleteTask();
                 })
         }) 
     }

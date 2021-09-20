@@ -293,7 +293,7 @@ function taskOperations(){
 
 
     return {
-        task_number, updateTasks, clearAllTasks
+        task_number, updateTasks, clearAllTasks,deleteTask
     }
 
 }

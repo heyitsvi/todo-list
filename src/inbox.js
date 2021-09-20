@@ -21,6 +21,7 @@ function InboxBtn(){
     document.getElementById("inbox").addEventListener("click", event => {
         displayInbox();
         taskOperations().updateTasks();
+        taskOperations().deleteTask();
 
     })
 }
