@@ -1,7 +1,10 @@
 import {createTaskElement, taskOperations} from "./tasks.js";
 import {appendElementtoID} from "./dom.js";
-import {displayInbox, InboxBtn} from "./inbox.js";
+import {displayInbox, inboxOperations} from "./inbox.js";
 import {ProjectOperations} from "./project.js";
+import {todayBtn} from "./today.js";
+import{thisWeekBtn} from "./thisweek.js";
+
 (function pageload(){
     const submitBtn = document.querySelector("#submit-name");
     const modalcontainer = document.querySelector("#modal-container");
@@ -41,13 +44,19 @@ import {ProjectOperations} from "./project.js";
         }
 
     })()
-    InboxBtn();
 
     displayInbox();
+
+    InboxBtn();
+
+    todayBtn();
+
+    thisWeekBtn();
 
     taskOperations();
 
     ProjectOperations();
+
 })()
 
 

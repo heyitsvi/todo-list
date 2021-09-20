@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "C:\\Users\\v.i\\test"
+		},
+		{
+			"path": "..\\..\\..\\Python Practice"
+		},
+		{
+			"path": "..\\..\\..\\Web Dev"
+		},
+		{
+			"path": "..\\.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Git"
+	}
+}

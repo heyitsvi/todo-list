@@ -1,5 +1,5 @@
 import {appendDisplayElement,createDisplayElement} from "./dom.js";
-
+import {taskOperations} from "./tasks.js";
 
 class Project{
     constructor(name){
@@ -12,7 +12,7 @@ class Project{
 function ProjectOperations(){
     let project_list = [];
     let project_number = 1;
-
+    // console.log(taskOperations().test());
     function createProject(title){
         let project = new Project(title);
         return project;
@@ -131,21 +131,28 @@ function ProjectOperations(){
     function displaytasksinProject(){
         document.querySelectorAll(".project-title").forEach(project => {
             project.addEventListener("click", event => {
+                let task_number = JSON.parse(localStorage.getItem("task_number"));
                 document.getElementById("display-tasks").textContent = "";
                 let project_name = project.textContent.replace("bookmarks  ","");
                 // console.log(project_name);
                 let i = 1;
-                while(localStorage.getItem(`${i}`)){
-                    let object = JSON.parse(localStorage.getItem(`${i}`));
-                    // console.log(object.project == "Inbox");
-            
-                    if (object.project == project_name){
-                        let display_element = createDisplayElement(object);
-                        // console.log(display_element);
-                        appendDisplayElement("display-tasks",display_element);
+                while(i <= task_number){
+                    if (localStorage.getItem(`${i}`)){
+                        let object = JSON.parse(localStorage.getItem(`${i}`));
+                        // console.log(object.project == "Inbox");
+                
+                        if (object.project == project_name){
+                            let display_element = createDisplayElement(object);
+                            // console.log(display_element);
+                            appendDisplayElement("display-tasks",display_element);
+                        }
                     }
                     i++;
                 }
+                taskOperations().updateTasks();
+                // // taskOperations().clearAllTasks();
+                // taskOperations().deleteTask();
+                // taskOperations().checkifTaskDone();
                 })
         }) 
     }
@@ -171,7 +178,6 @@ function ProjectOperations(){
         })
     })
 
-    
 }
 
 

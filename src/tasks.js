@@ -102,6 +102,7 @@ function taskOperations(){
 
     function removeTaskfromStorage(task_number){
         localStorage.removeItem(task_number);
+        // localStorage.setItem(task_number, "deleted-task");
     }
 
     function deleteTask(){
@@ -109,6 +110,7 @@ function taskOperations(){
             button.addEventListener("click", event => {
                 let num = button.id.split("-")[2];
                 // console.log(num);
+            
                 document.getElementById(`task-number-${num}`).remove();
                 removeTaskfromStorage(num);
             })
@@ -145,7 +147,8 @@ function taskOperations(){
                             updateTaskElement(num);
                             hideUpdateTaskContainer();
                             clearError("update-task-container");
-
+                            // updateTasks();
+                       
                         }
                         else{
                             displayError("update-task-container");
@@ -162,7 +165,7 @@ function taskOperations(){
 
 
     function updateTaskElement(task_number){
-        let object = JSON.parse(localStorage.getItem(task_number));
+        let object = JSON.parse(localStorage.getItem(`${task_number}`));
         // console.log(object);
         document.querySelector(`#task-number-${task_number}`).querySelector("#title").textContent = object.title;
         document.querySelector(`#task-number-${task_number}`).querySelector("#description").textContent=object.description;
@@ -184,6 +187,7 @@ function taskOperations(){
         // title, description, duedate, priority,check,task_number,project="Inbox"
         let object = new tasks(values.title,values.task_description,values.task_due,values.task_priority,false,task_number,values.project);
         task_number++;
+        localStorage.setItem("task_number", JSON.stringify(task_number));
         return object;
     }
 
@@ -232,7 +236,7 @@ function taskOperations(){
     }
 
     function updateCheck(task_number){
-        let object = JSON.parse(localStorage.getItem(task_number));
+        let object = JSON.parse(localStorage.getItem(`${task_number}`));
         object.check = true;
         storeinLocalStorage(object);
     }
@@ -261,7 +265,9 @@ function taskOperations(){
                 showClearTasksBtn();
                 clearvaluesTask();
                 clearError("task-container");
-                deleteTask();
+                // deleteTask();
+                clearAllTasks();
+                // InboxBtn();
             }
             else{
                 displayError("task-container");
@@ -271,28 +277,28 @@ function taskOperations(){
 
     showClearTasksBtn();
 
-
-    // function updatesubmittaskBtnClick(task_number){
-    //     document.querySelector("#update-submit-task").addEventListener("click", event => {
-    //         console.log("click");
-    //         console.log(getupdatedvaluesTask());
-    //         updateLocalStorageValues(getupdatedvaluesTask());
-    //         hideUpdateTaskContainer();
-    (function clearAllTasks(){
+    function clearAllTasks(){
         let i = 1;
+        let task_number = JSON.parse(localStorage.getItem("task_number"));
         document.querySelector("#clear-tasks").addEventListener("click", event => {
-            while(localStorage.getItem(`${i}`)){
-                localStorage.removeItem(`${i}`);
+            while(i <= task_number){
+                if (localStorage.getItem(`${i}`)){
+                    localStorage.removeItem(`${i}`);
+                }
                 i++;
             }
         task_number = 1;
-        displayInbox();
+        localStorage.setItem("task_number","1");
+        // displayInbox();
         })
-    })()
+    }
+
+    clearAllTasks();
+
 
 
     return {
-        task_number
+        task_number, updateTasks
     }
 
 }
@@ -302,7 +308,3 @@ function taskOperations(){
 
 
 export {taskOperations};
-
-// function getTasks(){
-
-// }
