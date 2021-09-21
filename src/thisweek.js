@@ -12,7 +12,6 @@ function getWeek(){
         let today = yyyy + '-' + mm + '-' + dd;
         week.push(today);
         dd = parseInt(dd);
-        // console.log(dd);
         dd++;
     }
 
@@ -22,9 +21,7 @@ function getWeek(){
 function displaytasksThisWeek(){
     let i = 1;
     let task_number = JSON.parse(localStorage.getItem("task_number"));
-    // console.log(task_number);
-    let week = getWeek();
-    // console.log(taskOperations().task_number);    
+    let week = getWeek();  
     document.getElementById("display-tasks").innerHTML = "";
     while(i <= task_number){
         if (localStorage.getItem(`${i}`)){
@@ -44,7 +41,6 @@ function displaytasksThisWeek(){
     }
     taskOperations().updateTasks();
     taskOperations().deleteTask();
-    // taskOperations().clearAllProjects();
     clearTasks();
 
 }

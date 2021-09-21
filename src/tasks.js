@@ -17,7 +17,6 @@ function taskOperations(){
     const taskcontainer = document.querySelector("#task-container");
     const update_task = document.querySelector("#update-task-container");
     let task_number = 1;
-    // let array = [];
 
     function checkTaskValues(){
         if (document.querySelector("#task-title-input").value&&
@@ -60,7 +59,6 @@ function taskOperations(){
 
     function getvaluesLocalStorage(task_number){
         let object = JSON.parse(localStorage.getItem(`${task_number}`));
-        // console.log(object);
         let title = object["title"];
         let description = object["description"];
         let duedate = object["duedate"];
@@ -101,14 +99,12 @@ function taskOperations(){
 
     function removeTaskfromStorage(task_number){
         localStorage.removeItem(task_number);
-        // localStorage.setItem(task_number, "deleted-task");
     }
 
     function deleteTask(){
         document.querySelectorAll(".closeTaskBtn").forEach(button => {
             button.addEventListener("click", event => {
                 let num = button.id.split("-")[2];
-                // console.log(num);
                 if (document.getElementById(`task-number-${num}`)){
                     document.getElementById(`task-number-${num}`).remove();
                     removeTaskfromStorage(num);
@@ -134,17 +130,14 @@ function taskOperations(){
             document.querySelectorAll(".updateTaskBtn").forEach(button => {
                 button.addEventListener("click", event => {
                     let num = button.id.split("-")[2];
-                    // console.log(num);
                     updatevaluesTask(`task-number-${num}`);
                     showUpdateTaskContainer();
                     document.querySelector("#update-submit-task").addEventListener("click", event => {
-                        // console.log(getupdatedvaluesTask());
                         if (getupdatedvaluesTask() !== false){
                             updateLocalStorageValues(num,getupdatedvaluesTask());
                             updateTaskElement(num);
                             hideUpdateTaskContainer();
                             clearError("update-task-container");
-                            // displayInbox();
                        
                         }
                         else{
@@ -271,25 +264,6 @@ function taskOperations(){
     })()
 
     showClearTasksBtn();
-
-    // function clearAllTasks(){
-    //     let i = 1;
-    //     let task_number = getTaskNumber();
-
-    // }
-
-    // clearAllTasks();
-
-
-
-
-        // task_number = 1;
-        // localStorage.setItem("task_number","1");
-
-
-    // clearTasks();
-
-
 
     return {
         updateTasks,deleteTask,getTaskNumber

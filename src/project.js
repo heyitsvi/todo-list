@@ -5,11 +5,6 @@ function ProjectOperations(){
     let project_list = [];
     let project_number = 1;
 
-    // function createProject(title){
-    //     let project = new Project(title);
-    //     return project;
-    // }
-
     function checkProjectInput(){
         
         if (document.getElementById("project-name").value == ''){
@@ -90,12 +85,12 @@ function ProjectOperations(){
     
     function clearallProjectDataList(){
         let data_list = document.querySelector("#project-selection-input-1").children;
-        for(let i = data_list.length - 1; i > 0; i--){
+        for(let i = data_list.length - 1; i > 1; i--){
             data_list.item(i).remove();
         }
 
         let data_list2 = document.querySelector("#project-selection-input-2").children;
-        for(let i = data_list2.length - 1; i > 0; i--){
+        for(let i = data_list2.length - 1; i > 1; i--){
             data_list2.item(i).remove();
         }
     }
@@ -142,7 +137,6 @@ function ProjectOperations(){
                 }
                 taskOperations().updateTasks();
                 taskOperations().deleteTask();
-                // taskOperations().clearAllProjects();
                 clearTasks();
                 })
         }) 

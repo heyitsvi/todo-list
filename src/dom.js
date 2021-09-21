@@ -105,14 +105,5 @@ function clearTasks() {
     })
 }
 
-// function showClearTasksBtn(){
-//     document.querySelector("#clear-tasks").classList.add('show');
-// }
-
-
-
-
-
-// function addTask
 
 export {createDisplayElement,appendDisplayElement, clearTasks };
