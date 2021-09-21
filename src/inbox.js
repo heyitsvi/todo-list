@@ -1,4 +1,4 @@
-import {appendDisplayElement, createDisplayElement} from "./dom";
+import {appendDisplayElement, clearTasks, createDisplayElement} from "./dom";
 import {taskOperations} from "./tasks.js";
 
 function displayInbox(){
@@ -15,14 +15,14 @@ function displayInbox(){
         }
         i++;
     }
+    taskOperations().updateTasks();
+    taskOperations().deleteTask();
+    clearTasks();
 }
 
 function InboxBtn(){
     document.getElementById("inbox").addEventListener("click", event => {
         displayInbox();
-        taskOperations().updateTasks();
-        taskOperations().deleteTask();
-
     })
 }
 

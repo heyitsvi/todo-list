@@ -1,5 +1,5 @@
 import {createTaskElement, taskOperations} from "./tasks.js";
-import {appendElementtoID} from "./dom.js";
+import {appendElementtoID,clearTasks} from "./dom.js";
 import {displayInbox, InboxBtn} from "./inbox.js";
 import {ProjectOperations} from "./project.js";
 import {todayBtn} from "./today.js";
@@ -52,6 +52,8 @@ import{thisWeekBtn} from "./thisweek.js";
     todayBtn();
 
     thisWeekBtn();
+
+    clearTasks();
 
     taskOperations();
 

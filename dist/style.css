@@ -25,6 +25,13 @@ html * {
 #add-task{
     grid-area: add;
     justify-self: right;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+#add-label{
+    order: 10;
 }
 
 #add-taskBtn{
@@ -161,15 +168,15 @@ html * {
     display: grid;
     background-color: white;
     width: 700px;
-    height: 400px;
+    height: 450px;
     border-radius: 10px;
     box-shadow: 4px 4px black;
     font-size: 40px;
     padding: 20px 20px;
     align-items: center;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 60px 25px 1fr 1fr 100px;
-    gap: 10px;
+    grid-template-rows: 40px 25px 1fr 1fr 100px;
+    gap: 15px 15px;
 }
 
 #task-description > textarea{
@@ -224,6 +231,7 @@ input[type="text"]{
 
 #task-due{
     display: flex;
+    flex-direction: row;
     grid-area: 3 / 2;
     border: solid;
     border-width: 2px;
@@ -237,6 +245,13 @@ input[type="text"]{
     margin-top: 10px;
     border-radius: 10px;
     box-shadow: 2px 2px ;
+    height: 30px;
+    align-self: flex-end;
+}
+
+#due-date-label{
+    align-self: flex-start;
+    grid-area: 3/2;
 }
 
 #submit-task, #update-submit-task{
@@ -252,6 +267,11 @@ input[type="text"]{
     align-self: flex-start;
 }
 
+#cancel-task-btn, #submit-task-btn {
+    display: flex;
+    justify-content: center;
+}
+
 input[type=date]{
     border-width: 0px;
 }
@@ -259,6 +279,7 @@ input[type=date]{
 .task-element{
     margin: 10px 10px 10px 10px;
     height: 32px;
+    max-height: auto;
     display: grid;
     grid-auto-columns: 50px 1fr 1fr 100px 100px 50px 50px;
     grid-template-rows: 1fr;
@@ -304,10 +325,10 @@ input[type=date]{
 
 #clear-tasks{
     height:35px;
-    width: 80px;
+    width: 100px;
     opacity: 0;
     pointer-events: none;
-    margin-left: 92%;
+    margin-left: 90%;
     margin-top: 10px;
     border-radius: 10px;
     box-shadow: 2px 2px black;
@@ -399,4 +420,24 @@ input[type=date]{
 
 #clear-projects{
     justify-content: center;
+}
+
+select{
+    width: 320px;
+    height: 35px;
+}
+
+select::selection{
+    outline: none;
+}
+
+#description{
+    max-height: auto;
+    white-space: pre-line;
+}
+
+.label{
+    display: flex;
+    font-size: 20px;
+    justify-content: left;
 }

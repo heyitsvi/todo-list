@@ -1,4 +1,4 @@
-import {appendDisplayElement, createDisplayElement} from "./dom";
+import {appendDisplayElement, createDisplayElement, clearTasks} from "./dom.js";
 import {taskOperations} from "./tasks.js";
 
 function getWeek(){
@@ -42,13 +42,16 @@ function displaytasksThisWeek(){
         }
         i++;
     }
+    taskOperations().updateTasks();
+    taskOperations().deleteTask();
+    // taskOperations().clearAllProjects();
+    clearTasks();
+
 }
 
 function thisWeekBtn(){
     document.getElementById("weekly-tasks").addEventListener("click", event => {
-        // console.log("click");
         displaytasksThisWeek();
-        taskOperations().updateTasks();
     })
 }
 

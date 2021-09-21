@@ -21,6 +21,7 @@
             <button class="material-icons" id="add-taskBtn" type="button">
                 add
             </button>
+            <label for="add-taskBtn" id="add-label">Add Task</label>
         </div>
         <div id="name">Guest</div>
     </div>
@@ -56,17 +57,9 @@
             <button id="clear-projects" class="control-btn">Clear Projects</button>
         </div>
         <div id="tasks">
-            <datalist id="project-data-list">
-                <option>Inbox</option>
-            </datalist>
-            <datalist id="priorities">
-                <option>High</option>
-                <option>Medium</option>
-                <option>Low</option>
-            </datalist>
             <div id="display-tasks">
             </div>
-            <button id="clear-tasks">Clear Tasks</button>
+            <button id="clear-tasks">Clear All Tasks</button>
         </div>
     </div>
     <div id="modal-container">
@@ -81,28 +74,41 @@
             <div id="task-header">Task Details</div>
             <div id="error-message"></div>
             <div id="task-title">
+                <label for="task-title-input" class="label">Title</label>
                 <input type="text" id="task-title-input" placeholder="Title">
             </div>
             <div id="task-description">
-                <textarea wrap="soft" maxlength="40" id="task-description-input" style="resize: none;" placeholder="Description"></textarea>
+                <label for="task-description-input" class="label">Description</label>
+                <textarea wrap="soft" id="task-description-input" style="resize: none; white-space: pre-wrap;" placeholder="Description"></textarea>
             </div>
+            <label for="due-date-title" id="due-date-label" class="label">Due Date</label>
             <div id="task-due">
                 <div id="due-date-title">Due Date</div>
                 <input type="date" id="task-due-input" id="due" >
             </div>
             <div id="data-list-selections">
+                <label for="task-priority" class="label">Priority</label>
                 <div id="task-priority">
-                    <input type="text" id="task-priority-input" list="priorities"  placeholder="Priority">
+                    <select id="task-priority-input" class="control-btn">
+                        <option value="">Select Priority</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
                 </div>
+                <label for="project-selection" class="label">Project</label>
                 <div id="project-selection">
-                    <input type="text" id="project-selection-input" list="project-data-list"  placeholder="Project" value="Inbox">
+                    <select id="project-selection-input-1" class="control-btn">
+                        <option value="">Select Project</option>
+                        <option value="Inbox">Inbox</option>
+                    </select>
                 </div>
             </div>
             <div id="cancel-task">
-                <button class="control-btn">Cancel</button>
+                <button id="cancel-task-btn" class="control-btn">Cancel</button>
             </div>
             <div id="submit-task">
-                <button  type="submit" class="control-btn">Submit</button>
+                <button  type="submit" id="submit-task-btn" class="control-btn">Submit</button>
             </div>
         </div>
     </div>
@@ -111,28 +117,39 @@
             <div id="task-header">Task Details</div>
             <div id="error-message"></div>
             <div id="task-title">
+                <label for="task-title-input" class="label">Title</label>
                 <input type="text" id="task-title-input" placeholder="Title">
             </div>
             <div id="task-description">
-                <textarea wrap="soft" maxlength="40" id="task-description-input" style="resize: none;" placeholder="Description"></textarea>
+                <label for="task-description-input" class="label">Description</label>
+                <textarea wrap="soft" id="task-description-input" style="resize: none; white-space: pre-wrap;" placeholder="Description"></textarea>
             </div>
+            <label for="due-date-title" id="due-date-label" class="label">Due Date</label>
             <div id="task-due">
                 <div id="due-date-title">Due Date</div>
                 <input type="date" id="task-due-input" id="due" >
             </div>
             <div id="data-list-selections">
                 <div id="task-priority">
-                    <input type="text" id="task-priority-input" list="priorities"  placeholder="Priority">
+                    <select id="task-priority-input" class="control-btn">
+                        <option value="">Select Priority</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
                 </div>
                 <div id="project-selection">
-                    <input type="text" id="project-selection-input" list="project-data-list"  placeholder="Project" value="Inbox">
+                    <select id="project-selection-input-2" class="control-btn">
+                        <option value="">Select Project</option>
+                        <option value="Inbox">Inbox</option>
+                    </select>
                 </div>
             </div>
             <div id="update-cancel-task">
-                <button class="control-btn">Cancel</button>
+                <button id="cancel-task-btn" class="control-btn">Cancel</button>
             </div>
             <div id="update-submit-task">
-                <button  type="submit" class="control-btn">Update</button>
+                <button  type="submit" id="submit-task-btn" class="control-btn">Update</button>
             </div>
         </div>
     </div>

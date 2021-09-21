@@ -1,4 +1,5 @@
 import {displayInbox} from "./inbox.js";
+import {taskOperations} from "./tasks.js";
 
 
 
@@ -38,6 +39,16 @@ function createDisplayElement(object){
     let priority = document.createElement('div');
     priority.setAttribute("id","priority");
     priority.textContent = object["priority"];
+    // if (object.priority == "High" && object.check === false){
+    //     task.style.backgroundColor = "#ef476f";
+    // }
+    // else if(object.priority == "Medium" && object.check === false){
+    //     task.style.backgroundColor = "#06d6a0";
+
+    // }
+    // else if(object.priority == "Low" && object.check === false) {
+    //     task.style.backgroundColor = "white";
+    // }
     let update = document.createElement('button');
     update.setAttribute("id",`update-task-${object["task_number"]}`);
     update.setAttribute("class","updateTaskBtn");
@@ -63,15 +74,36 @@ function createDisplayElement(object){
     return task;
 }
 
-// function 
 
-
-
-function appendWarning(){
-    
+function clearTasks() {
+    // let children = document.getElementById("display-tasks").children;
+    // let task_number = JSON.parse(localStorage.getItem('task_number'));
+    // // console.log(task_number);
+    // document.querySelector("#clear-tasks").addEventListener("click", event => {
+    //     for(let i=0; i< children.length; i++){
+    //         let num = children.item(i).id.split("-")[2];
+    //         if (localStorage.getItem(`${num}`)){
+    //             children.item(i).remove();
+    //             localStorage.removeItem(`${num}`);
+    //             task_number--;
+    //             localStorage.setItem("task_number",task_number);
+    //         }
+    //     }
+    // })
+    let i = 1;
+    let task_number = taskOperations().getTaskNumber();
+    document.querySelector("#clear-tasks").addEventListener("click", event => {
+        while(i <= task_number){
+            if (localStorage.getItem(`${i}`)){
+                localStorage.removeItem(`${i}`);
+            }
+            i++;
+        }
+    task_number = 1;
+    localStorage.setItem("task_number","1");
+    displayInbox();
+    })
 }
-
-
 
 // function showClearTasksBtn(){
 //     document.querySelector("#clear-tasks").classList.add('show');
@@ -83,4 +115,4 @@ function appendWarning(){
 
 // function addTask
 
-export {createDisplayElement,appendDisplayElement, };
+export {createDisplayElement,appendDisplayElement, clearTasks };

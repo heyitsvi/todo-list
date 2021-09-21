@@ -1,4 +1,4 @@
-import {appendDisplayElement, createDisplayElement,} from "./dom.js";
+import {clearTasks} from "./dom.js";
 import {displayInbox} from "./inbox.js";
 
 class tasks{
@@ -17,13 +17,14 @@ function taskOperations(){
     const taskcontainer = document.querySelector("#task-container");
     const update_task = document.querySelector("#update-task-container");
     let task_number = 1;
-    let array = [];
+    // let array = [];
 
     function checkTaskValues(){
         if (document.querySelector("#task-title-input").value&&
         document.querySelector("#task-description-input").value&&
         document.querySelector("#task-due-input").value&&
-        document.querySelector("#task-priority-input").value){
+        document.querySelector("#task-priority-input").value !== '' &&
+        document.querySelector("#project-selection-input-1").value !== ""){
             return true;
         }
         else{
@@ -37,7 +38,8 @@ function taskOperations(){
         if(document.querySelector("#update-task-container").querySelector("#task-title-input").value == "" ||
         document.querySelector("#update-task-container").querySelector("#task-description-input").value == ""||
         document.querySelector("#update-task-container").querySelector("#task-due-input").value == ""||
-        document.querySelector("#update-task-container").querySelector("#task-priority-input").value ==""){
+        document.querySelector("#update-task-container").querySelector("#task-priority-input").value =="" ||
+        document.querySelector("#update-task-container").querySelector("#project-selection-input-2").value ==""){
             return false;
         }
         else{
@@ -45,7 +47,7 @@ function taskOperations(){
             let description = document.querySelector("#update-task-container").querySelector("#task-description-input").value;
             let duedate = document.querySelector("#update-task-container").querySelector("#task-due-input").value;
             let priority = document.querySelector("#update-task-container").querySelector("#task-priority-input").value;
-            let project = document.querySelector("#update-task-container").querySelector("#project-selection-input").value;
+            let project = document.querySelector("#update-task-container").querySelector("#project-selection-input-2").value;
             return {title,description,duedate,priority,project};
         }
     }
@@ -81,14 +83,11 @@ function taskOperations(){
         let object = getvaluesLocalStorage(num);
         let project = object.project;
 
-        // console.log(project);
-
-
         document.querySelector("#update-task-container").querySelector("#task-title-input").value = title;
         document.querySelector("#update-task-container").querySelector("#task-description-input").value=description;
         document.querySelector("#update-task-container").querySelector("#task-due-input").value=duedate;
         document.querySelector("#update-task-container").querySelector("#task-priority-input").value=priority;
-        document.querySelector("#update-task-container").querySelector("#project-selection-input").value = project;
+        document.querySelector("#update-task-container").querySelector("#project-selection-input-2").value = project;
 
     }
 
@@ -97,7 +96,7 @@ function taskOperations(){
         document.querySelector("#task-description-input").value="";
         document.querySelector("#task-due-input").value="";
         document.querySelector("#task-priority-input").value="";
-        document.querySelector("#project-selection-input").value="Inbox";
+        document.querySelector("#project-selection-input-1").value="";
     }
 
     function removeTaskfromStorage(task_number){
@@ -110,9 +109,10 @@ function taskOperations(){
             button.addEventListener("click", event => {
                 let num = button.id.split("-")[2];
                 // console.log(num);
-            
-                document.getElementById(`task-number-${num}`).remove();
-                removeTaskfromStorage(num);
+                if (document.getElementById(`task-number-${num}`)){
+                    document.getElementById(`task-number-${num}`).remove();
+                    removeTaskfromStorage(num);
+                }
             })
         })
     }
@@ -144,7 +144,7 @@ function taskOperations(){
                             updateTaskElement(num);
                             hideUpdateTaskContainer();
                             clearError("update-task-container");
-                            // updateTasks();
+                            // displayInbox();
                        
                         }
                         else{
@@ -172,7 +172,7 @@ function taskOperations(){
         let task_description = document.querySelector("#task-description-input").value;
         let task_due = document.querySelector("#task-due-input").value;
         let task_priority = document.querySelector("#task-priority-input").value;
-        let project = document.querySelector("#project-selection-input").value;
+        let project = document.querySelector("#project-selection-input-1").value;
         return {title,task_description,task_due,task_priority,project};
     }
 
@@ -262,7 +262,7 @@ function taskOperations(){
                 showClearTasksBtn();
                 clearvaluesTask();
                 clearError("task-container");
-                clearAllTasks();
+                clearTasks();
             }
             else{
                 displayError("task-container");
@@ -272,28 +272,27 @@ function taskOperations(){
 
     showClearTasksBtn();
 
-    function clearAllTasks(){
-        let i = 1;
-        let task_number = getTaskNumber();
-        document.querySelector("#clear-tasks").addEventListener("click", event => {
-            while(i <= task_number){
-                if (localStorage.getItem(`${i}`)){
-                    localStorage.removeItem(`${i}`);
-                }
-                i++;
-            }
-        task_number = 1;
-        localStorage.setItem("task_number","1");
-        displayInbox();
-        })
-    }
+    // function clearAllTasks(){
+    //     let i = 1;
+    //     let task_number = getTaskNumber();
 
-    clearAllTasks();
+    // }
+
+    // clearAllTasks();
+
+
+
+
+        // task_number = 1;
+        // localStorage.setItem("task_number","1");
+
+
+    // clearTasks();
 
 
 
     return {
-        task_number, updateTasks, clearAllTasks,deleteTask
+        updateTasks,deleteTask,getTaskNumber
     }
 
 }

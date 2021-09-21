@@ -1,14 +1,14 @@
-import {appendDisplayElement,createDisplayElement} from "./dom.js";
+import {appendDisplayElement,clearTasks,createDisplayElement} from "./dom.js";
 import {taskOperations} from "./tasks.js";
 
 function ProjectOperations(){
     let project_list = [];
     let project_number = 1;
 
-    function createProject(title){
-        let project = new Project(title);
-        return project;
-    }
+    // function createProject(title){
+    //     let project = new Project(title);
+    //     return project;
+    // }
 
     function checkProjectInput(){
         
@@ -80,19 +80,28 @@ function ProjectOperations(){
     function createProjectDataList(value){
         let div = document.createElement('option');
         div.textContent = value;
-        appendDisplayElement("project-data-list",div);
+        let div2 = document.createElement('option');
+        div2.textContent = value;
+
+        appendDisplayElement("project-selection-input-1",div);
+        appendDisplayElement("project-selection-input-2",div2);
+
     }
     
     function clearallProjectDataList(){
-        let data_list = document.querySelector("#project-data-list").children;
+        let data_list = document.querySelector("#project-selection-input-1").children;
         for(let i = data_list.length - 1; i > 0; i--){
             data_list.item(i).remove();
+        }
+
+        let data_list2 = document.querySelector("#project-selection-input-2").children;
+        for(let i = data_list2.length - 1; i > 0; i--){
+            data_list2.item(i).remove();
         }
     }
 
     (function clearAllProjects(){
         document.getElementById("clear-projects").addEventListener("click", event => {
-            // console.log("click");
             document.getElementById("project-list").textContent = "";
             project_list = [];
             localStorage.removeItem("Projects");
@@ -110,6 +119,8 @@ function ProjectOperations(){
     }
 
     setTimeout(getProjectDataList,100);
+
+
 
     function displaytasksinProject(){
         document.querySelectorAll(".project-title").forEach(project => {
@@ -130,8 +141,9 @@ function ProjectOperations(){
                     i++;
                 }
                 taskOperations().updateTasks();
-                taskOperations().clearAllTasks();
                 taskOperations().deleteTask();
+                // taskOperations().clearAllProjects();
+                clearTasks();
                 })
         }) 
     }

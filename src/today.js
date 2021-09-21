@@ -1,4 +1,4 @@
-import {appendDisplayElement, createDisplayElement} from "./dom";
+import {appendDisplayElement, createDisplayElement,clearTasks} from "./dom.js";
 import {taskOperations} from "./tasks.js";
 
 function getDate(){
@@ -27,12 +27,16 @@ function displaytasksinToday(){
         }
         i++;
     }
+    taskOperations().updateTasks();
+    taskOperations().deleteTask();
+    // taskOperations().clearAllProjects();
+    clearTasks();
 }
 
 function todayBtn(){
     document.getElementById("today-tasks").addEventListener("click", event => {
         displaytasksinToday();
-        taskOperations().updateTasks();
+        // taskOperations().updateTasks();
     })
 }
 
