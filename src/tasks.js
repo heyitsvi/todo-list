@@ -16,7 +16,14 @@ class tasks{
 function taskOperations(){
     const taskcontainer = document.querySelector("#task-container");
     const update_task = document.querySelector("#update-task-container");
-    let task_number = 1;
+    let task_number;
+    
+    if (localStorage.getItem("task_number")){
+        task_number = getTaskNumber();
+    }
+    else{
+        task_number = 1;
+    }
 
     function checkTaskValues(){
         if (document.querySelector("#task-title-input").value&&
