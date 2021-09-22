@@ -216,12 +216,14 @@ function taskOperations(){
     (function addtaskBtnClick(){
         document.querySelector("#add-taskBtn").addEventListener("click", event => {
             showTaskContainer();
+            clearError("task-container");
         });
     })();
 
     (function cancelBtnClick(){
         document.querySelector("#cancel-task").addEventListener("click", event => {
             hideTaskContainer();
+            clearvaluesTask();
         });
 
         document.querySelector("#update-cancel-task").addEventListener("click", event => {
@@ -256,12 +258,12 @@ function taskOperations(){
             if(checkTaskValues() === true){
                 storeinLocalStorage(createTaskObject());
                 hideTaskContainer();
+                clearError("task-container");
                 displayInbox();
                 updateTasks();
                 checkifTaskDone();
                 showClearTasksBtn();
                 clearvaluesTask();
-                clearError("task-container");
                 clearTasks();
             }
             else{
