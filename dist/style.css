@@ -2,6 +2,11 @@ html * {
     font-family: 'Cascadia Mono', Courier, monospace;
 }
 
+@font-face {
+    font-family: "Open Sans";
+    src: url("/src/Cascadia") format("otf"),
+  }
+
 #header{
     display: grid;
     grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
