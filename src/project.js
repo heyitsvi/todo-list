@@ -164,6 +164,7 @@ function ProjectOperations(){
 
     addProjectBtn();
 
+    return {displaytasksinProject}
 
 }
 

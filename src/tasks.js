@@ -1,5 +1,6 @@
 import {clearTasks} from "./dom.js";
 import {displayInbox} from "./inbox.js";
+import {ProjectOperations} from "./project.js"
 
 class tasks{
     constructor(title, description, duedate, priority,check,task_number,project="Inbox"){
@@ -265,6 +266,7 @@ function taskOperations(){
                 showClearTasksBtn();
                 clearvaluesTask();
                 clearTasks();
+                ProjectOperations().displaytasksinProject();
             }
             else{
                 displayError("task-container");
