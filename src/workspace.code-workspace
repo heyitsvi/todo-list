@@ -1,19 +1,26 @@
 {
-	"folders": [
-		{
-			"path": "C:\\Users\\v.i\\test"
-		},
-		{
-			"path": "..\\..\\..\\Python Practice"
-		},
-		{
-			"path": "..\\..\\..\\Web Dev"
-		},
-		{
-			"path": "..\\.."
-		}
-	],
-	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "Git"
-	}
+  "folders": [
+    {
+      "path": "C:\\Users\\v.i\\test"
+    },
+    {
+      "path": "..\\..\\..\\Python Practice"
+    },
+    {
+      "path": "..\\..\\..\\Web Dev"
+    },
+    {
+      "path": "..\\.."
+    },
+    {
+      "path": "..\\..\\..\\C++"
+    },
+    {
+      "path": "..\\..\\..\\Assignments"
+    }
+  ],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "Git",
+    "git.ignoreLimitWarning": true
+  }
 }
